@@ -1,0 +1,1 @@
+Console.WriteLine($"Part One: {File.ReadAllLines("input.txt").Sum(line => line.Split(' ')[1][0] - 'W' + (((line.Split(' ')[0][0] - 'A' - (line.Split(' ')[1][0] - 'X')) + 5) % 3 * 12 % 10 % 3) * 3)}");
