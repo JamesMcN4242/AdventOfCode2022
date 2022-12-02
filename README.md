@@ -15,4 +15,5 @@ I may come back to do the first part at least in assembly later, as it's one of 
 For now, this showed me it's been a while since I've wrote C++ as the file loading seemed an immediate pain, which made me re-use the InputGrabber class I made for AOC two years ago.
 
 # Day Two (C#)
-So far I've only done the first part of the problem, purely because I wanted to make it in a single line.. And boi was that a horrible line. More magical than the Harry Potter series.
+I completed the first part of the problem in one line, purely because of the challenges above. Boi was that a horrible line. More magical than the Harry Potter series.
+The second one still uses some ugly ASCII maths, but hey, at least it's out the way quickly. 
