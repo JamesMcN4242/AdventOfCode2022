@@ -17,3 +17,7 @@ For now, this showed me it's been a while since I've wrote C++ as the file loadi
 # Day Two (C#)
 I completed the first part of the problem in one line, purely because of the challenges above. Boi was that a horrible line. More magical than the Harry Potter series.
 The second one still uses some ugly ASCII maths, but hey, at least it's out the way quickly. 
+
+# Day Three (C#)
+Today I embraced the LINQ life. It kind of hurts to know how little care I put into performance, but at least for now performance isn't critical for these tasks. So it's not the worst. 
+Definitely doesn't feel like I'm making good use of the Sustainable Software Engineering talks I just attended.
