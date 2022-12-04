@@ -21,3 +21,7 @@ The second one still uses some ugly ASCII maths, but hey, at least it's out the 
 # Day Three (C#)
 Today I embraced the LINQ life. It kind of hurts to know how little care I put into performance, but at least for now performance isn't critical for these tasks. So it's not the worst. 
 Definitely doesn't feel like I'm making good use of the Sustainable Software Engineering talks I just attended.
+
+# Day Four (C#)
+Could have done both parts in one loop, but the dataset is still really small, so two separate Counts is definitely okay to go for instead.
+Today's was really easy, so I probably should have done today's in a different language. Oh well. Mistakes were made.
