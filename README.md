@@ -25,3 +25,7 @@ Definitely doesn't feel like I'm making good use of the Sustainable Software Eng
 # Day Four (C#)
 Could have done both parts in one loop, but the dataset is still really small, so two separate Counts is definitely okay to go for instead.
 Today's was really easy, so I probably should have done today's in a different language. Oh well. Mistakes were made.
+
+# Day Five (C#)
+The problem itself was really simple, but parsing the input text was a bit more annoying today. 
+I'm sure there must be other nice reading ways to do this, but the whole solution to me was just: `Stack`.
