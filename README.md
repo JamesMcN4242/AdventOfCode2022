@@ -29,3 +29,6 @@ Today's was really easy, so I probably should have done today's in a different l
 # Day Five (C#)
 The problem itself was really simple, but parsing the input text was a bit more annoying today. 
 I'm sure there must be other nice reading ways to do this, but the whole solution to me was just: `Stack`.
+
+# Day Six (C#)
+I should really start to use other languages before the puzzles get more difficult. This would have been a great one to quickly do in another language.. But no. I used C# because I was lazy and wanted to get it out the way for the day. Likewise with my other challenges, it's only going to get more difficult if I don't start soon for it.
