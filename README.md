@@ -32,3 +32,6 @@ I'm sure there must be other nice reading ways to do this, but the whole solutio
 
 # Day Six (C#)
 I should really start to use other languages before the puzzles get more difficult. This would have been a great one to quickly do in another language.. But no. I used C# because I was lazy and wanted to get it out the way for the day. Likewise with my other challenges, it's only going to get more difficult if I don't start soon for it.
+
+# Day Seven (C#)
+Day seven was another simple to do one, but tedious to setup. I think tomorrow during the national holiday I may visualise this one, as it feels like a nice one to show in a tree building like fashion.
