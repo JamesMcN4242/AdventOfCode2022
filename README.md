@@ -35,3 +35,8 @@ I should really start to use other languages before the puzzles get more difficu
 
 # Day Seven (C#)
 Day seven was another simple to do one, but tedious to setup. I think tomorrow during the national holiday I may visualise this one, as it feels like a nice one to show in a tree building like fashion.
+Edit: Visualisation needs to wait for another day, as the holiday has now been claimed to visit my partner's family.
+
+# Day Eight (C#)
+I don't think I went about this the best way. But I guess it's clear at this point I never think I've gone the right way with a solution for AoC, even if it completes pretty instantly.
+Today since this was completed on a train, I've not taken any time at all to clean it. So there is probably easy to fix segments.
