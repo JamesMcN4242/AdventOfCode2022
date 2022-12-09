@@ -40,3 +40,6 @@ Edit: Visualisation needs to wait for another day, as the holiday has now been c
 # Day Eight (C#)
 I don't think I went about this the best way. But I guess it's clear at this point I never think I've gone the right way with a solution for AoC, even if it completes pretty instantly.
 Today since this was completed on a train, I've not taken any time at all to clean it. So there is probably easy to fix segments.
+
+# Day Nine (C#)
+This one wasn't as bad as I was expecting it to be. Part two required just extending my solution slightly to work for both parts which was nice. Initially I thought that was going to result in a much bigger change. I'm interested to see what weird and nice mathematical ways people come up with to solve today's puzzle. Doing it interatively was the only thing that came to mind for me... Ohhh. Unless I'd done a Sonic companion like approach where I use the same inputs delayed for the following knots, as opposed to stopping the head for each single step. That seems like more effort though.
