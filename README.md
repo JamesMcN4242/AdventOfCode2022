@@ -16,7 +16,7 @@ For now, this showed me it's been a while since I've wrote C++ as the file loadi
 
 # Day Two (C#)
 I completed the first part of the problem in one line, purely because of the challenges above. Boi was that a horrible line. More magical than the Harry Potter series.
-The second one still uses some ugly ASCII maths, but hey, at least it's out the way quickly. 
+The second one still uses some ugly ASCII maths, but hey, at least it's out the way quickly.
 
 # Day Three (C#)
 Today I embraced the LINQ life. It kind of hurts to know how little care I put into performance, but at least for now performance isn't critical for these tasks. So it's not the worst. 
@@ -43,3 +43,6 @@ Today since this was completed on a train, I've not taken any time at all to cle
 
 # Day Nine (C#)
 This one wasn't as bad as I was expecting it to be. Part two required just extending my solution slightly to work for both parts which was nice. Initially I thought that was going to result in a much bigger change. I'm interested to see what weird and nice mathematical ways people come up with to solve today's puzzle. Doing it interatively was the only thing that came to mind for me... Ohhh. Unless I'd done a Sonic companion like approach where I use the same inputs delayed for the following knots, as opposed to stopping the head for each single step. That seems like more effort though.
+
+# Day Ten (C#)
+The only struggle I had with today's puzzle was actually reading it. The logic itself is easy to follow, but how it was worded threw my brain for a loop today. Made 3 or 4 small errors in a row until I read through it all again. Mein Gehirn ist kaputt.
