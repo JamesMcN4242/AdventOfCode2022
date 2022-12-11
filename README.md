@@ -46,3 +46,7 @@ This one wasn't as bad as I was expecting it to be. Part two required just exten
 
 # Day Ten (C#)
 The only struggle I had with today's puzzle was actually reading it. The logic itself is easy to follow, but how it was worded threw my brain for a loop today. Made 3 or 4 small errors in a row until I read through it all again. Mein Gehirn ist kaputt.
+
+# Day Eleven (C#)
+Some real monkey business going on here.... I'll see myself out.
+Today was the first day I needed to find a hint for the part 2 solution. In hindsight it was pretty obvious, but isn't something that I need generally in life, so it completely stumped me.
