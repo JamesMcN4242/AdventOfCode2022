@@ -50,3 +50,6 @@ The only struggle I had with today's puzzle was actually reading it. The logic i
 # Day Eleven (C#)
 Some real monkey business going on here.... I'll see myself out.
 Today was the first day I needed to find a hint for the part 2 solution. In hindsight it was pretty obvious, but isn't something that I need generally in life, so it completely stumped me.
+
+# Day Twelve (C#)
+Simple mapping exercise. Reminds me of some old coursework at uni in first or second year. Used a hashset instead of a list of nodes to check, purely to try stop processing the same node twice. Didn't compare timings on this approach though, so List may have been faster. Either way it's pretty instant again, so no harm, no foul.
