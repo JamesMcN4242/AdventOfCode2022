@@ -56,3 +56,6 @@ Simple mapping exercise. Reminds me of some old coursework at uni in first or se
 
 # Day Thirteen (C#)
 Initially I started writing my own parser for this, which was a very rewarding 15 minutes.. And also a terrible idea. I can't believe I didn't notice it was valid json arrays from the get go. Once I noticed that it was pretty easy to do, although my code looks very messy.
+
+# Day Fourteen (C#)
+This is another good candidate to visualise, but today for speed I went for just a hashmap implementation which makes it harder (but not impossible) to draw from. I really liked this puzzle, simple, to the point, and a nice concept.
