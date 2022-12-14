@@ -53,3 +53,6 @@ Today was the first day I needed to find a hint for the part 2 solution. In hind
 
 # Day Twelve (C#)
 Simple mapping exercise. Reminds me of some old coursework at uni in first or second year. Used a hashset instead of a list of nodes to check, purely to try stop processing the same node twice. Didn't compare timings on this approach though, so List may have been faster. Either way it's pretty instant again, so no harm, no foul.
+
+# Day Thirteen (C#)
+Initially I started writing my own parser for this, which was a very rewarding 15 minutes.. And also a terrible idea. I can't believe I didn't notice it was valid json arrays from the get go. Once I noticed that it was pretty easy to do, although my code looks very messy.
