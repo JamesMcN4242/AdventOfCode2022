@@ -51,9 +51,9 @@ ulong PartTwo()
   // Since we're trying to hit exact edges we'll give it some safety margins.
   foreach (var overlapPoint in overlapPoints)
   {
-    for (long i = -2; i <= 2; ++i)
+    for (long i = -1; i <= 1; ++i)
     {
-      for (long j = -2; j <= 2; ++j)
+      for (long j = -1; j <= 1; ++j)
       {
         var position = (x: overlapPoint.x + i, y: overlapPoint.y + j);
         if (position.x is >= 0 and <= maxBoundary
