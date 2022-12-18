@@ -59,3 +59,8 @@ Initially I started writing my own parser for this, which was a very rewarding 1
 
 # Day Fourteen (C#)
 This is another good candidate to visualise, but today for speed I went for just a hashmap implementation which makes it harder (but not impossible) to draw from. I really liked this puzzle, simple, to the point, and a nice concept.
+
+# Day Fifteen (C#)
+This one took me a while. The idea I ended up going with for part two was one I tried near the start, but ended up making a mistake and abandoning the approach in favour for trying something else. That lost me a lot of time. 
+
+I really enjoyed thinking about this puzzle though, it's something that forces you not the brute force it. The concept itself once you think about the problem isn't terrible either, but I admit it showed my maths was rusty that it took me so long to implement this correctly for integer positions. And even then I added some safety gaps just in case.
