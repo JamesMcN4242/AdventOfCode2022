@@ -64,3 +64,9 @@ This is another good candidate to visualise, but today for speed I went for just
 This one took me a while. The idea I ended up going with for part two was one I tried near the start, but ended up making a mistake and abandoning the approach in favour for trying something else. That lost me a lot of time. 
 
 I really enjoyed thinking about this puzzle though, it's something that forces you not the brute force it. The concept itself once you think about the problem isn't terrible either, but I admit it showed my maths was rusty that it took me so long to implement this correctly for integer positions. And even then I added some safety gaps just in case.
+
+# Day Sixteen (C#)
+Can't believe I didn't see the elephant twist coming. Part two, I'm going to rant a bit and give the solution away. So if you don't want that, stop reading now!
+Final warning.
+
+Part one gave me confidence in how fast I could generate all possible paths for a singular actor. I did dabble with extending part one initially, but realised quickly that a solution like that would take a long time to complete. So I went back to the concept of storing every possible path and finding the first two highest values that did not overlap. The only thing that shot me in the foot initially was the fact that I did not immediately consider incomplete paths. This meant it wouldn't have worked for either my input or the example input. I'm sure there has to be a nicer way than the excensive memory usage I used for this puzzle. But in terms of memory vs computation speed, this one was by far the better choice.
