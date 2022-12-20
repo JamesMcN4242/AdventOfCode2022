@@ -10,35 +10,60 @@ var rockArrangements = new[]
   new []{"##", "##" }
 };
 
-List<string> outputLines = new List<string>(500);
 Console.WriteLine($"Part One: {Run(2022)}");
+Console.WriteLine($"Part Two: {Run(1000000000000)}");
 
-//Part two, will try to find repeated hashes for the top X tower sections dependant on the rock and input indexes. 
-//Presumably it has to eventually loop around when we have so many rocks.
-//Console.WriteLine($"Part Two: {Run(1000000000000)}");
-
-long Run(long rocksToDrop, long? outputRock = null)
+long Run(long rocksToDrop)
 {
   int inputIndex = 0;
   int rockIndex = 0;
+
+  var lastRockToStartingIndexDict = new Dictionary<(int rockIndex, int inputIndex), (List<string> lastFifteenRows, long firstHit, long rockCountOnOccurence)>(rockArrangements.Length * inputString.Length);
   List<string> rows = new List<string>(5000) { "_______" };
+  long skippedRowCount = 0;
+
   for (long rocksFallen = 0; rocksFallen < rocksToDrop; ++rocksFallen, ++rockIndex)
   {
     rockIndex %= rockArrangements.Length;
     var rockToFall = rockArrangements[rockIndex];
 
-    //Position is relative to the top left point
+    // Try to see if we've been in this configuration before. If so lets back skip as many rocks as possible.
+    const int rowsToBacktrack = 15;
+    if (rows.Count > rowsToBacktrack)
+    {
+      var rowRange = rows.GetRange(rows.Count - rowsToBacktrack - 1, rowsToBacktrack);
+      if (lastRockToStartingIndexDict.ContainsKey((rockIndex, inputIndex)))
+      {
+        if (lastRockToStartingIndexDict[(rockIndex, inputIndex)].lastFifteenRows.SequenceEqual(rowRange))
+        {
+          Console.WriteLine($"Found Repeating Sequence.\nFirst hit: {lastRockToStartingIndexDict[(rockIndex, inputIndex)].firstHit}, now hit on tower height: {rows.Count}." +
+            $"\nRock  Occurrence: {lastRockToStartingIndexDict[(rockIndex, inputIndex)].rockCountOnOccurence}, now on rock number {rocksFallen}\n\n");
+
+          var skippedRocks = rocksFallen - lastRockToStartingIndexDict[(rockIndex, inputIndex)].rockCountOnOccurence;
+          long skippedLoops = (rocksToDrop - rocksFallen) / skippedRocks;
+
+          skippedRowCount = skippedLoops * (rows.Count - lastRockToStartingIndexDict[(rockIndex, inputIndex)].firstHit);
+          rocksFallen += skippedRocks * skippedLoops;
+          lastRockToStartingIndexDict.Clear();
+        }
+      }
+      else
+      {
+        lastRockToStartingIndexDict.Add((rockIndex, inputIndex), (rowRange, rows.Count, rocksFallen));
+      }
+    }
+
+    // Position is relative to the top left point
     var rockPos = (x: 2, y: rows.Count + rockToFall.Length + 2);
 
-    while(true)
+    // Move the rock
+    while (true)
     {
       int index = inputIndex++;
       inputIndex %= inputString.Length;
-      
-      int xChange = inputString[index] == '<' ? -1 : 1;
-      if (outputRock.HasValue && outputRock.Value == rocksFallen + 1)
-        OutputView(rows, rockToFall, rockPos, inputString[index]);
 
+      // X Movement
+      int xChange = inputString[index] == '<' ? -1 : 1;
       bool shouldMove = rockPos.x + xChange >= 0 && rockPos.x + xChange + rockToFall[0].Length <= 7;
       for (int row = 0; row < rockToFall.Length && shouldMove; ++row)
       {
@@ -51,10 +76,11 @@ long Run(long rocksToDrop, long? outputRock = null)
 
       if (shouldMove) rockPos.x += xChange;
 
+      // Y Movement
       shouldMove = rockPos.y - rockToFall.Length > 0;
       for (int row = 0; row < rockToFall.Length && shouldMove; ++row)
       {
-        for(int column = 0; column < rockToFall[row].Length && shouldMove; ++column)
+        for (int column = 0; column < rockToFall[row].Length && shouldMove; ++column)
         {
           shouldMove = rows.Count <= rockPos.y - row - 1 || rows[rockPos.y - row - 1][column + rockPos.x] == '.' || rockToFall[row][column] == '.';
         }
@@ -82,8 +108,8 @@ long Run(long rocksToDrop, long? outputRock = null)
     }
   }
 
-  // Remove the floor
-  return rows.Count - 1;
+  // Remove the floor and apply any skips we managed to do
+  return rows.Count + skippedRowCount - 1;
 }
 
 string AddToString(string present, string toAdd, int startPosition, char toSet = '#')
@@ -94,38 +120,6 @@ string AddToString(string present, string toAdd, int startPosition, char toSet =
     if (toAdd[i] == '#')
       strB[startPosition + i] = toSet;
   }
-  
+
   return strB.ToString();
-}
-
-void OutputView(List<string> rows, string[] rockFormation, (int, int) rockPosition, char nextOperation)
-{
-  outputLines.Clear();
-  outputLines.Add($"X Move applied after this: {nextOperation}\n\n");
-  
-  for (int i = rockFormation.Length; i > 0 && rows.Count < rockPosition.Item2 - rockFormation.Length + i + 1; --i)
-  {
-    outputLines.Add("|" + AddToString(".......", rockFormation[^i], rockPosition.Item1, '@') + "|");
-  }
-
-  for (int i = rockPosition.Item2 - rockFormation.Length; i >= rows.Count; --i )
-  {
-    outputLines.Add("|.......|");
-  }
-  
-  for (int i = rows.Count - 1; i >= 0 && i > rows.Count - 15; --i)
-  {
-    if (rockPosition.Item2 >= i && rockPosition.Item2 - rockFormation.Length < i)
-    {
-      int jIndex = rockPosition.Item2 - i;
-      outputLines.Add("|" + AddToString(rows[i], rockFormation[jIndex], rockPosition.Item1, '@') + "|");
-    }
-    else
-    {
-      outputLines.Add($"|{rows[i]}|");
-    }
-  }
-  
-  outputLines.Add("\n\n");
-  File.AppendAllLines("outputFile.txt", outputLines);
 }
