@@ -76,3 +76,6 @@ After getting part one last night, it should have taken me about ten minutes to 
 However, I named one of my `long`s wrongly when making calculations for skipping rocks. And that led to a lot of confusion for ten-fifteen minutes alone. This meant I lost my lunch break looking at this small problem. What a life.
 
 Part One was the bane of my life, as I had an issue that only occurred in my input and not the sample input, and trying to pin point exactly where that was a nightmare. Did lead to some (now removed) visualisation methods though.
+
+# Day Twenty (C#)
+Since I'm a couple days behind but seen this one was significantly quicker to make than the rest I did it out of order. Standard stuff, just a doubly linked list. Could have done it in place with a List<(int currentIndex, int moveValue)> then sort by currentIndex, but I don't know how much benefit that would have even given since we'd still be jumping around memory similar to the linked list is anyway. There is no way the full list would have sit or been indexed nicely on caches.
