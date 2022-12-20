@@ -70,3 +70,9 @@ Can't believe I didn't see the elephant twist coming. Part two, I'm going to ran
 Final warning.
 
 Part one gave me confidence in how fast I could generate all possible paths for a singular actor. I did dabble with extending part one initially, but realised quickly that a solution like that would take a long time to complete. So I went back to the concept of storing every possible path and finding the first two highest values that did not overlap. The only thing that shot me in the foot initially was the fact that I did not immediately consider incomplete paths. This meant it wouldn't have worked for either my input or the example input. I'm sure there has to be a nicer way than the excensive memory usage I used for this puzzle. But in terms of memory vs computation speed, this one was by far the better choice.
+
+# Day Seventeen (C#)
+After getting part one last night, it should have taken me about ten minutes to do part two. 
+However, I named one of my `long`s wrongly when making calculations for skipping rocks. And that led to a lot of confusion for ten-fifteen minutes alone. This meant I lost my lunch break looking at this small problem. What a life.
+
+Part One was the bane of my life, as I had an issue that only occurred in my input and not the sample input, and trying to pin point exactly where that was a nightmare. Did lead to some (now removed) visualisation methods though.
