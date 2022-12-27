@@ -82,3 +82,6 @@ Today was suspiciously easy. I expected a big last minute twist, but none ever c
 
 # Day Twenty (C#)
 Since I'm a couple days behind but seen this one was significantly quicker to make than the rest I did it out of order. Standard stuff, just a doubly linked list. Could have done it in place with a List<(int currentIndex, int moveValue)> then sort by currentIndex, but I don't know how much benefit that would have even given since we'd still be jumping around memory similar to the linked list is anyway. There is no way the full list would have sit or been indexed nicely on caches.
+
+# Day Twenty One (C#)
+The first day I've done in a while. Thankfully it was an easy one to pick up over lunch. A nice simple, no optimisation required day. Just what I needed to get back into this. I'm hoping this is an easy sway towards day 19 which I still need to complete but seems tedious to make a good branch culling algorithm on.
