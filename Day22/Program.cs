@@ -1,4 +1,4 @@
-var input = File.ReadAllText("input.txt").Replace("\r", "").Split("\n\n");
+var input = File.ReadAllText("exampleInput.txt").Replace("\r", "").Split("\n\n");
 var mapStrings = input[0].Split('\n');
 var instructions = input[1].Trim();
 
@@ -14,6 +14,7 @@ for (int i = 0; i < mapStrings.Length; ++i)
 }
 
 Console.WriteLine($"Part One: {PartOne()}");
+Console.WriteLine($"Part One: {PartTwo()}");
 
 long PartOne()
 {
@@ -170,6 +171,101 @@ long PartOne()
   return (pos.y + 1) * 1000 + (pos.x + 1) * 4 + (int)dir;
 }
 
+long PartTwo()
+{
+  //const int boxSideSize = 50;
+  const int boxSideSize = 4;
+  List<BoxSide> sides = new List<BoxSide>(6);
+
+  for (int i = 0; i < map.Length; ++i)
+  {
+    bool added = false;
+
+    for (int j = 0; j < map[0].Length; ++j)
+    {
+      if (map[i][j] != ' ')
+      {
+        added = true;
+        sides.Add(new BoxSide(sides.Count + 1, (j, i), (j + boxSideSize - 1, i + boxSideSize - 1)));
+        j += boxSideSize - 1;
+      }
+    }
+
+    if (added) i += boxSideSize - 1;
+  }
+
+  for(int i = 0; i < sides.Count - 1; ++i)
+  {
+    for (int j = i + 1; j < sides.Count; ++j)
+    {
+      if (sides[i].BoxStartPoint.y + boxSideSize == sides[j].BoxStartPoint.y &&
+        sides[i].BoxStartPoint.x == sides[j].BoxStartPoint.x && sides[i].ConnectedBoxSide[(int)Facing.DOWN] == 0)
+      {
+        sides[i].ConnectedBoxSide[(int)Facing.DOWN] = sides[j].BoxSideNumber;
+        sides[j].ConnectedBoxSide[(int)Facing.UP] = sides[i].BoxSideNumber;
+      }
+      else if (sides[i].BoxStartPoint.x + boxSideSize == sides[j].BoxStartPoint.x && 
+        sides[i].BoxStartPoint.y == sides[j].BoxStartPoint.y && sides[i].ConnectedBoxSide[(int)Facing.RIGHT] == 0)
+      {
+        sides[i].ConnectedBoxSide[(int)Facing.RIGHT] = sides[j].BoxSideNumber;
+        sides[j].ConnectedBoxSide[(int)Facing.LEFT] = sides[i].BoxSideNumber;
+      }
+    }
+  }
+
+  while(sides.Any(side => side.ConnectedBoxSide.Any(connection => connection == 0)))
+  {
+    foreach (var side in sides)
+    {
+      if (!side.ConnectedBoxSide.Any(connection => connection == 0)) continue;
+
+      if (side.ConnectedBoxSide[(int)Facing.LEFT] == 0)
+      {
+        if (side.ConnectedBoxSide[(int)Facing.UP] != 0 && sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.LEFT] != 0)
+        {
+          side.ConnectedBoxSide[(int)Facing.LEFT] = sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.LEFT];
+          sides[sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.LEFT] - 1].ConnectedBoxSide[(int)Facing.DOWN] = side.BoxSideNumber;
+        }
+        else if (side.ConnectedBoxSide[(int)Facing.DOWN] != 0 && sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.LEFT] != 0)
+        {
+          side.ConnectedBoxSide[(int)Facing.LEFT] = sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.LEFT];
+          sides[sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.LEFT] - 1].ConnectedBoxSide[(int)Facing.UP] = side.BoxSideNumber;
+        }
+      }
+
+      if (side.ConnectedBoxSide[(int)Facing.RIGHT] == 0)
+      {
+        if (side.ConnectedBoxSide[(int)Facing.UP] != 0 && sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.RIGHT] != 0)
+        {
+          side.ConnectedBoxSide[(int)Facing.RIGHT] = sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.RIGHT];
+          sides[sides[side.ConnectedBoxSide[(int)Facing.UP] - 1].ConnectedBoxSide[(int)Facing.RIGHT - 1]].ConnectedBoxSide[(int)Facing.DOWN] = side.BoxSideNumber;
+        }
+        else if (side.ConnectedBoxSide[(int)Facing.DOWN] != 0 && sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.RIGHT] != 0)
+        {
+          side.ConnectedBoxSide[(int)Facing.LEFT] = sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.RIGHT];
+          sides[sides[side.ConnectedBoxSide[(int)Facing.DOWN] - 1].ConnectedBoxSide[(int)Facing.RIGHT] - 1].ConnectedBoxSide[(int)Facing.UP] = side.BoxSideNumber;
+        }
+      }
+    }
+  }
+
+  // Write map's sides.
+  foreach (var side in sides)
+  {
+    for(int i = side.BoxStartPoint.y; i <= side.BoxEndPoint.y; ++i)
+    {
+      for (int j = side.BoxStartPoint.x; j <= side.BoxEndPoint.x; ++j)
+      {
+        map[i][j] = side.BoxSideNumber.ToString()[0];
+      }
+    }
+  }
+
+  PrintMap();
+
+  return sides.Count;
+}
+
 void PrintMap()
 {
   File.WriteAllLines("directionMap.txt", Array.ConvertAll(map, charArr => string.Join("", charArr)));
@@ -182,4 +278,20 @@ enum Facing
   LEFT,
   UP,
   COUNT
+}
+
+class BoxSide
+{
+  public int BoxSideNumber { get; }
+  public (int x, int y) BoxStartPoint { get; }
+  public (int x, int y) BoxEndPoint { get; }
+
+  public int[] ConnectedBoxSide { get; } = new int[(int)Facing.COUNT];
+  
+  public BoxSide (int boxSideNumber, (int, int) boxStart, (int, int) boxEnd)
+  {
+    BoxSideNumber = boxSideNumber;
+    BoxStartPoint = boxStart;
+    BoxEndPoint = boxEnd;
+  }
 }
