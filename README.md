@@ -80,6 +80,10 @@ Part One was the bane of my life, as I had an issue that only occurred in my inp
 # Day Eighteen (C#)
 Today was suspiciously easy. I expected a big last minute twist, but none ever came. It was a nice break from the days before it.
 
+# Day Nineteen (C#)
+I hate it. This is the first task that has really stopped me cold. It's shown me I need to look up better ways to manage so many branches in future.
+This day's was super slow - like 5-10 minutes slow, and violated my "instant" solution goals for the year. May need to come back to it at a later day.
+
 # Day Twenty (C#)
 Since I'm a couple days behind but seen this one was significantly quicker to make than the rest I did it out of order. Standard stuff, just a doubly linked list. Could have done it in place with a List<(int currentIndex, int moveValue)> then sort by currentIndex, but I don't know how much benefit that would have even given since we'd still be jumping around memory similar to the linked list is anyway. There is no way the full list would have sit or been indexed nicely on caches.
 
